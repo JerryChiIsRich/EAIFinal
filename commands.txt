@@ -1,0 +1,48 @@
+python tools/extract_edge_from_concat.py \
+  data/edge2shoes/val/1_AB.jpg \
+  tmp/edge_0001.png
+
+accelerate launch src/train_teacher_controlnet.py \
+  --data_root data/edge2shoes \
+  --out_dir outputs/teacher_controlnet \
+  --concat_format \
+  --image_size 256 \
+  --batch_size 1 \
+  --lr 1e-5 \
+  --max_steps 500
+
+python src/infer_teacher.py \
+  --edge tmp/edge_0001.png \
+  --teacher_controlnet_dir outputs/teacher_controlnet \
+  --steps 50 \
+  --out teacher.png
+
+accelerate launch src/distill_lcm_lora.py \
+  --data_root data/edge2shoes \
+  --teacher_controlnet_dir outputs/teacher_controlnet \
+  --out_dir outputs/student_lora_lcm_v3 \
+  --concat_format \
+  --image_size 256 \
+  --batch_size 1 \
+  --lr 3e-5 \
+  --max_steps 1000
+
+
+先跑:
+python src/infer_student_lcm_lora.py \
+  --edge tmp/edge_0001.png \
+  --teacher_controlnet_dir outputs/teacher_controlnet \
+  --student_lora_dir outputs/student_lora_lcm_v2 \
+  --steps 50 \
+  --out student_50steps_v2.png
+
+
+python src/infer_student_lcm_lora.py \
+  --edge tmp/edge_0001.png \
+  --teacher_controlnet_dir outputs/teacher_controlnet \
+  --student_lora_dir outputs/student_lora_lcm \
+  --steps 50 \
+  --out student_50steps.png
+
+
+
