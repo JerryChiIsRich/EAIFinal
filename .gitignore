@@ -1,0 +1,37 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+
+# =====================
+# Data & Outputs (ML projects)
+# =====================
+data/
+outputs/
+tmp/
+
+# =====================
+# Images / Generated Results
+# =====================
+*.png
+*.jpg
+*.jpeg
+
+# =====================
+# Logs
+# =====================
+*.log
+
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
