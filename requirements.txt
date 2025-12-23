@@ -10,3 +10,4 @@ pillow
 tqdm
 numpy
 scipy
+lpips
