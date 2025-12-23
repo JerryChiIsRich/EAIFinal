@@ -27,22 +27,13 @@ accelerate launch src/distill_lcm_lora.py \
   --lr 3e-5 \
   --max_steps 1000
 
-
-先跑:
-python src/infer_student_lcm_lora.py \
-  --edge tmp/edge_0001.png \
-  --teacher_controlnet_dir outputs/teacher_controlnet \
-  --student_lora_dir outputs/student_lora_lcm_v2 \
-  --steps 50 \
-  --out student_50steps_v2.png
-
-
 python src/infer_student_lcm_lora.py \
   --edge tmp/edge_0001.png \
   --teacher_controlnet_dir outputs/teacher_controlnet \
   --student_lora_dir outputs/student_lora_lcm \
   --steps 50 \
   --out student_50steps.png
+
 
 
 
