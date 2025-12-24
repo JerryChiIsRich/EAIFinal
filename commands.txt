@@ -1,6 +1,8 @@
 pip install -r requirements.txt
 accelerate config
 
+python huglogin.py
+
 python tools/extract_edge_from_concat.py \
   data/edge2shoes/val/1_AB.jpg \
   tmp/edge_0001.png
@@ -36,6 +38,7 @@ python src/infer_student_lcm_lora.py \
   --student_lora_dir outputs/student_lora_lcm \
   --steps 50 \
   --out student_50steps.png
+
 
 
 
