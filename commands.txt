@@ -1,4 +1,5 @@
 pip install -r requirements.txt
+pip install accelerate -U
 accelerate config
 
 python huglogin.py
@@ -38,6 +39,7 @@ python src/infer_student_lcm_lora.py \
   --student_lora_dir outputs/student_lora_lcm \
   --steps 50 \
   --out student_50steps.png
+
 
 
 
