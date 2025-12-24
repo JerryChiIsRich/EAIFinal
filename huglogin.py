@@ -1,2 +1,2 @@
 from huggingface_hub import login
-login()
+login("YOUR_HUGGINGFACE_TOKEN")
